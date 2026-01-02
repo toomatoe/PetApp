@@ -305,7 +305,8 @@ do
                             {
                                 validEntry = int.TryParse(readResult, out petAge);
                             }
-                        } while (validEntry == false);
+                        } 
+                        while (validEntry == false);
     
                         ourAnimals[i, 2] = "Age: " + petAge.ToString();
                     }
@@ -364,7 +365,35 @@ do
 
         case "5":
             // Edit an animal’s age");
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            //Basically if a user wants to change the age that they inputted for option 3
+
+            Console.WriteLine("Which animal ID # are you updating?");
+            //First pick out the correct ID then update the age
+            readResult = Console.ReadLine();
+            string editID = "";
+            if (readResult != null)
+            {
+                editID = "ID #: " + readResult.ToLower();
+            }
+        
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] == editID)
+                {
+                    do
+                    {
+                        Console.WriteLine($"Enter the new age for {ourAnimals[i,3]}");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            validEntry = int.TryParse(readResult, out petAge);
+                        }
+                    } while (validEntry == false);
+
+                    ourAnimals[i, 2] = "Age: " + petAge.ToString();
+                }
+            }
+            Console.WriteLine("The age has been updated.");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;

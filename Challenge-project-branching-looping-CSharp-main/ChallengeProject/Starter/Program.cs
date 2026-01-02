@@ -296,27 +296,19 @@ do
                     //check age
                     if(ourAnimals[i,2] == "Age: ?")
                     {
-                        Console.WriteLine($"Please enter the age for {ourAnimals[i,3]}");
-                        readResult = Console.ReadLine();
-                        if(readResult != "")
+                    
+                        do
                         {
-                            ourAnimals[i,2] = "Age: " + readResult;
-                        }
-                        else
-                        {
-                            //keep prompting until a valid age is entered
-                            validEntry = false;
-                            while(validEntry == false)
+                            Console.WriteLine($"Enter an age for {ourAnimals[i, 0]}");
+                            readResult = Console.ReadLine();
+                            if (readResult != null)
                             {
-                                Console.WriteLine($"Please enter a valid age for {ourAnimals[i,3]}");
-                                readResult = Console.ReadLine();
-                                if(readResult != null)
-                                {
-                                    ourAnimals[i,2] = "Age: " + readResult;
-                                    validEntry = true;
-                                }
-                                
-                    }}}
+                                validEntry = int.TryParse(readResult, out petAge);
+                            }
+                        } while (validEntry == false);
+    
+                        ourAnimals[i, 2] = "Age: " + petAge.ToString();
+                    }
                     //check physical description
                     if(ourAnimals[i,4] == "Physical description: ")
                     {

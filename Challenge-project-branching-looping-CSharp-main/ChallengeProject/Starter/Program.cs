@@ -400,21 +400,75 @@ do
 
         case "6":
             // Edit an animal’s personality description");
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            //Similar to option 5 but for personality description, make sure its possible for any ids
+            Console.WriteLine("Which animal ID # are you updating?");
+            readResult = Console.ReadLine();
+            editID = "";
+            if (readResult != null)
+            {
+                editID = "ID #: " + readResult.ToLower();
+
+            }
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] == editID)
+                {
+                    Console.WriteLine($"Enter the new personality description for {ourAnimals[i,3]}");
+                    readResult = Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        ourAnimals[i, 5] = "Personality: " + readResult;
+                    }
+                }
+            }
+            Console.WriteLine("The personality description has been updated.");
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
         
         case "7":
             // Display all cats with a specified characteristic
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            //basically in the dataset we have, if they are a cat and have all their info filled out, display them
+           
+            Console.WriteLine("The following cats have complete information:");
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 1] == "Species: cat" && ourAnimals
+                    [i, 2] != "Age: ?" && ourAnimals[i, 4] != "Physical description: " && ourAnimals[i, 3] != "Nickname: " && ourAnimals[i, 5] != "Personality: ")
+                {
+                    Console.WriteLine();
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Console.WriteLine(ourAnimals[i, j].ToString());
+                    }
+                }
+            }
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
 
         case "8":
             // Display all dogs with a specified characteristic
-            Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
+            //Same as option 7 but for dogs
+            
+            Console.WriteLine("The following dogs have complete information:");
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (
+                    ourAnimals[i, 1] == "Species: dog" && ourAnimals
+                    [i, 2] != "Age: ?" && 
+                    ourAnimals[i, 4] != "Physical description: " && 
+                    ourAnimals[i, 3] != "Nickname: " && 
+                    ourAnimals[i, 5] != "Personality: ")
+            {
+                Console.WriteLine();
+                for (int j = 0; j < 6; j++)
+                {
+                    Console.WriteLine(ourAnimals[i, j].ToString());
+                }
+            }
+            }
+            
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
